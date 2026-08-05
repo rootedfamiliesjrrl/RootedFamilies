@@ -1,0 +1,7 @@
+<button class="gallery-item reveal" data-full="roots.png">
+    <img src="roots.png" alt="Outdoor portrait session by Rooted Families Photo Studios.">
+</button>
+
+<button class="gallery-item reveal" data-full="rootss.png">
+    <img src="rootss.png" alt="Creative outdoor portrait photography by Rooted Families Photo Studios.">
+</button>
