@@ -1,0 +1,12 @@
+ROOTED FAMILIES V2 — GITHUB UPDATE
+
+1. Unzip this file.
+2. Open your RootedFamilies repository on GitHub.
+3. Click Add file > Upload files.
+4. Select index.html, styles.css, script.js AND the entire assets folder.
+5. GitHub will ask whether to replace files with the same names. Upload/replace them.
+6. Scroll down and click Commit changes.
+7. GitHub Pages updates automatically, usually within 1–3 minutes.
+8. Refresh your live website. A private/incognito window can help if the old version is cached.
+
+Do not upload the ZIP itself.
