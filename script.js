@@ -1,71 +1,64 @@
-const menuToggle = document.getElementById("menuToggle");
-const mainNav = document.getElementById("mainNav");
+const menuButton=document.getElementById('menuButton');
+const navigation=document.getElementById('navigation');
 
-menuToggle?.addEventListener("click", () => {
-  const open = mainNav.classList.toggle("open");
-  menuToggle.classList.toggle("active", open);
-  menuToggle.setAttribute("aria-expanded", String(open));
-  document.body.style.overflow = open ? "hidden" : "";
+menuButton.addEventListener('click',()=>{
+  const open=navigation.classList.toggle('open');
+  menuButton.classList.toggle('active',open);
+  menuButton.setAttribute('aria-expanded',String(open));
+  document.body.classList.toggle('menu-open',open);
 });
 
-document.querySelectorAll("#mainNav a").forEach(a => {
-  a.addEventListener("click", () => {
-    mainNav.classList.remove("open");
-    menuToggle?.classList.remove("active");
-    menuToggle?.setAttribute("aria-expanded", "false");
-    document.body.style.overflow = "";
+document.querySelectorAll('#navigation a').forEach(link=>{
+  link.addEventListener('click',()=>{
+    navigation.classList.remove('open');
+    menuButton.classList.remove('active');
+    menuButton.setAttribute('aria-expanded','false');
+    document.body.classList.remove('menu-open');
   });
 });
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12 });
+},{threshold:.1});
 
-document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-const form = document.getElementById("bookingForm");
-
-form?.addEventListener("submit", event => {
+document.getElementById('bookingForm').addEventListener('submit',event=>{
   event.preventDefault();
 
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const date = document.getElementById("date").value;
-  const hours = document.getElementById("hours").value;
-  const type = document.getElementById("type").value;
-  const message = document.getElementById("message").value.trim();
+  const name=document.getElementById('name').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const phone=document.getElementById('phone').value.trim();
+  const date=document.getElementById('date').value;
+  const hours=document.getElementById('hours').value;
+  const type=document.getElementById('type').value;
+  const message=document.getElementById('message').value.trim();
 
-  const subject = encodeURIComponent(`Rooted Families Booking Request - ${name}`);
-
-  const body = encodeURIComponent(
-`Hello Rooted Families,
+  const subject=encodeURIComponent('Rooted Families Booking Request - '+name);
+  const body=encodeURIComponent(`Hello Rooted Families,
 
 I would like to request a photography session.
 
 Name: ${name}
 Email: ${email}
-Phone: ${phone || "Not provided"}
+Phone: ${phone || 'Not provided'}
 Preferred Date: ${date}
 Session Length: ${hours}
 Session Type: ${type}
 
 Session Details:
-${message || "Not provided"}
+${message || 'Not provided'}
 
-I understand that a $30 security deposit is required to reserve my session and that all fees and security deposits are final and non-refundable.
+I understand that a $30 security deposit is required and that all fees and security deposits are final and non-refundable.
 
-Thank you.`
-  );
+Thank you.`);
 
-  window.location.href =
-    `mailto:rootedfamiliesjrrl@gmail.com?subject=${subject}&body=${body}`;
+  window.location.href='mailto:rootedfamiliesjrrl@gmail.com?subject='+subject+'&body='+body;
 });
 
-const year = document.getElementById("year");
-if (year) year.textContent = new Date().getFullYear();
+document.getElementById('year').textContent=new Date().getFullYear();
